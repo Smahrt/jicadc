@@ -1,3 +1,11 @@
+<?php
+    include ('config.php');
+    
+    $sql = "SELECT * FROM contacts JOIN contact_type ON contacts.contact_type_id = contact_type.id" ;
+    $result = $dbh->query($sql);
+    
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -117,7 +125,7 @@
 	        <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
-	                    <div class="col-md-7">
+	                    <div class="col-md-8">
                             <div class="card">
 	                            <div class="card-header" data-background-color="orange">
 	                                <h4 class="title">Contacts</h4>
@@ -132,20 +140,23 @@
                                                 <th>
                                                     <input type="checkbox" name="optionsCheckboxes" id="checkAll" class="checkbox-me">
                                                 </th>
-                                                <th>Name</th>
+                                                <th>Officer Name</th>
+                                                <th>PHC Name</th>
                                                 <th>Phone</th>
-                                                <th>Group</th>
+                                                <th>Contact Group</th>
                                                 <th>Action</th>
 	                                       </tr>
                                         </thead>
 	                                    <tbody>
-	                                        <tr>
+                                            <?php while($user_array = $result->fetch(PDO::FETCH_ASSOC)){ ?>
+                                            <tr>
                                                 <td>
                                                     <input type="checkbox" name="optionsCheckboxes" class="checkContact checkbox-me">
                                                 </td>
-	                                        	<td>Dakota Rice</td>
-												<td class="text-primary">08022279012</td>
-	                                        	<td>Niger</td>
+                                                <?php echo '<td>'.$user_array['officer_name'].'</td>'?>
+                                                <?php echo '<td>'.$user_array['phc_name'].'</td>'?> 
+                                                <?php echo '<td>'.$user_array['phone_number'].'</td>'?>
+                                                <?php echo '<td>'.$user_array['type'].'</td>'?>
 	                                        	<td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit Contact">
                                                         <i class="material-icons">edit</i>
@@ -153,95 +164,16 @@
                                                     <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove Contact">
                                                         <i class="material-icons">close</i>
                                                     </button>
-                                                </td>
-	                                        </tr>
-	                                        <tr>
-                                                <td>
-                                                    <input type="checkbox" name="optionsCheckboxes" class="checkContact checkbox-me">
-                                                </td>
-	                                        	<td>Sinaai-Waas</td>
-												<td class="text-primary">08032458795</td>
-	                                        	<td>Minerva Hooper</td>
-	                                        	<td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit Contact">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove Contact">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-	                                        </tr>
-	                                        <tr>
-                                                <td>
-                                                    <input type="checkbox" name="optionsCheckboxes" class="checkContact checkbox-me">
-                                                </td>
-	                                        	<td>Baileux</td>
-												<td class="text-primary">08194546622</td>
-	                                        	<td>Sage Rodriguez</td>
-	                                        	<td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit Contact">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove Contact">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-	                                        </tr>
-	                                        <tr>
-                                                <td>
-                                                    <input type="checkbox" name="optionsCheckboxes" class="checkContact checkbox-me">
-                                                </td>
-	                                        	<td>Overland Park</td>
-												<td class="text-primary">08162348795</td>
-	                                        	<td>Philip Chaney</td>
-	                                        	<td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit Contact">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove Contact">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-	                                        </tr>
-	                                        <tr>
-                                                <td>
-                                                    <input type="checkbox" name="optionsCheckboxes" class="checkContact checkbox-me">
-                                                </td>
-	                                        	<td>Feldkirchen in Kärnten</td>
-												<td class="text-primary">08023784545</td>
-	                                        	<td>Doris Greene</td>
-	                                        	<td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit Contact">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove Contact">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-	                                        </tr>
-	                                        <tr>
-                                                <td>
-                                                    <input type="checkbox" name="optionsCheckboxes" class="checkContact checkbox-me">
-                                                </td>
-	                                        	<td>Gloucester</td>
-												<td class="text-primary">08023279012</td>
-	                                        	<td>Mason Porter</td>
-	                                        	<td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-simple btn-xs" data-original-title="Edit Contact">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-xs" data-original-title="Remove Contact">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-	                                        </tr>
+                                                </td> 
+                                            </tr>
+                                            <?php } ?>
 	                                    </tbody>
 	                                </table>
 
 	                            </div>
 	                        </div>
 	                    </div>
-						<div class="col-md-5">
+						<div class="col-md-4">
     						<div class="card">
                                 <div class="card-header" data-background-color="orange">
                                     <h4 class="title">Make a Call</h4>

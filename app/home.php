@@ -1,32 +1,7 @@
 <?php
-   require_once "../vendor/autoload.php";
-    use Twilio\Rest\Client;
     
-    //$AccountSid = "AC635fe259ccfa0983ef7c87c292b2ebec";
-    $AccountSid = "ACbbb2bdc97932964b709697702be99690";
-    //$AuthToken = "b4de3a5516096334a27c1fb3e1815dbd";
-    $AuthToken = "ee536c11385b0bd9864687b90f49cd41";
-
-    // Step 3: Instantiate a new Twilio Rest Client
-    $client = new Client($AccountSid, $AuthToken);
-    $fromNumber = "+18304693282";
-
-    if(isset($_POST['submit'])){
-        //$toNumber = $_POST['toContact'];
-        $toNumber = "+2348137809477";
-        try {
-            // Initiate a new outbound call
-            $call = $client->account->calls->create(
-                $toNumber,
-                $fromNumber,
-                // Step 6: Set the URL Twilio will request when the call is answered.
-                array("url" => "http://demo.twilio.com/docs/voice.xml")
-            );
-            $success = "Started call: " . $call->to;
-        } catch (Exception $e) {
-            $error = "Error: " . $e->getMessage();
-        }
-    }
+    include('config.php');
+    include('make-call.php');
 ?>
 
 <!doctype html>
@@ -166,9 +141,7 @@
                                 </div>';
                     
                     }
-                    
-                        
-                        ?>
+                    ?>
 	                <div class="row">
 	                    <div class="col-md-7">
                             <div class="row">
@@ -179,7 +152,14 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">All Surveys</p>
-                                            <h3 class="title">3</h3>
+                                            <h3 class="title">
+                                                <?php
+                                                    $query ="SELECT * from surveys";
+                                                    $result = $dbh->query($query);
+                                                    $num = $result->rowcount($result);
+                                                    echo $num;
+                                                ?>
+                                            </h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
@@ -213,7 +193,14 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">Contact Groups</p>
-                                            <h3 class="title">12</h3>
+                                            <h3 class="title">
+                                                <?php
+                                                    $query ="SELECT * from contact_type";
+                                                    $result = $dbh->query($query);
+                                                    $num = $result->rowcount($result);
+                                                    echo $num;
+                                                ?>
+                                            </h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
@@ -229,7 +216,14 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">All Contacts</p>
-                                            <h3 class="title">245</h3>
+                                            <h3 class="title">
+                                                <?php
+                                                    $query ="SELECT * from contacts";
+                                                    $result = $dbh->query($query);
+                                                    $num = $result->rowcount($result);
+                                                    echo $num;
+                                                ?>
+                                            </h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
