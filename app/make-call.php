@@ -27,3 +27,50 @@ require_once "../vendor/autoload.php";
     }
 
 ?>
+
+
+<div class="card">
+    <div class="card-header" data-background-color="orange">
+        <h4 class="title">Make a Call</h4>
+        <p class="category">Start a new survey by calling a contact or selecting a contact group</p>
+    </div>
+
+    <div class="card-content">
+        <form action="home.php" method="post">
+            <div class="row">
+                <div class="col-md-5 col-sm-6">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Select Contact</label>
+                        <select id="contacts" name="toContact" class="form-control">
+                            <option>Select Contact</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <p>OR</p>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Select Contact Group</label>
+                        <select id="contact-group" disabled class="form-control">
+                            <option>Select Contact Group</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Select Survey</label>
+                        <select class="form-control">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" name="submit" value="submit" class="btn btn-warning pull-right">Start Survey</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

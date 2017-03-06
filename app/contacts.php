@@ -39,41 +39,10 @@
 <body>
 
 	<div class="wrapper">
-	    <div class="sidebar" data-color="orange" data-image="../assets/img/sidebar-1.jpg">
-			<div class="logo">
-				<a href="#" class="simple-text">
-					JICA DC
-				</a>
-			</div>
-
-	    	<div class="sidebar-wrapper">
-				<ul class="nav">
-	                <li>
-	                    <a href="home.php">
-	                        <i class="material-icons">dashboard</i>
-	                        <p>Dashboard</p>
-	                    </a>
-	                </li>
-	                <li class="active">
-	                    <a href="contacts.php">
-	                        <i class="material-icons">account_box</i>
-	                        <p>Contacts</p>
-	                    </a>
-	                </li>
-	                <li>
-                        <a href="surveys.php">
-                            <i class="material-icons">content_paste</i>
-                            <p>Surveys</p>
-                       </a>
-	                </li>
-					<li class="active-pro">
-                        <a href="create-new-survey.php">
-	                        <p>CREATE SURVEY</p>
-	                    </a>
-                    </li>
-	            </ul>
-	    	</div>
-	    </div>
+        
+        <?php
+            include('sidebar.php');
+        ?>
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -174,51 +143,10 @@
 	                        </div>
 	                    </div>
 						<div class="col-md-4">
-    						<div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Make a Call</h4>
-                                    <p class="category">Start a new survey by calling a contact or selecting a contact group</p>
-                                </div>
-                                
-    							<div class="card-content">
-    								<form>
-	                                    <div class="row">
-	                                        <div class="col-md-5 col-sm-6">
-												<div class="form-group label-floating">
-													<label class="control-label">Select Contact</label>
-                                                    <select id="contacts" class="form-control">
-                                                        <option>Select Contact</option>
-                                                    </select>
-												</div>
-	                                        </div>
-                                            <div class="col-md-1">
-                                                <p>OR</p>
-                                            </div>
-	                                        <div class="col-md-6 col-sm-6">
-												<div class="form-group label-floating">
-													<label class="control-label">Select Contact Group</label>
-                                                    <select id="contact-group" class="form-control">
-                                                        <option>Select Contact Group</option>
-                                                    </select>
-												</div>
-	                                        </div>
-	                                    </div>
-
-	                                    <div class="row">
-	                                        <div class="col-md-12">
-												<div class="form-group label-floating">
-													<label class="control-label">Select Survey</label>
-                                                    <select class="form-control">
-                                                    </select>
-												</div>
-	                                        </div>
-	                                    </div>
-
-	                                    <button type="submit" class="btn btn-warning pull-right">Start Survey</button>
-	                                    <div class="clearfix"></div>
-	                                </form>
-    							</div>
-    						</div>
+                            
+                                <?php
+                                    include('make-call.php');
+                                ?>
 		    			</div>
                         <div class="col-md-5 pull-right">
                             <div class="card">
@@ -281,13 +209,6 @@
     
     <script type="text/javascript">
         $(document).ready(function(){
-            var country = ["Australia", "Bangladesh", "Denmark", "Hong Kong", "Indonesia", "Netherlands", "New Zealand", "South Africa"];
-            $("#contacts").select2({
-              data: country
-            });
-            $("#contact-group").select2({
-              data: country
-            });
             
             /** CheckBox Magic **/
             $('#checkAll').change(function(){
