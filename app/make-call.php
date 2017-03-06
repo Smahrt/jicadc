@@ -11,8 +11,7 @@ require_once "../vendor/autoload.php";
     $fromNumber = "+18304693282";
 
     if(isset($_POST['submit'])){
-        //$toNumber = $_POST['toContact'];
-        $toNumber = "+2348137809477";
+        $toNumber = $_POST['toContact'];
         try {
             // Initiate a new outbound call
             $call = $client->account->calls->create(
@@ -39,10 +38,18 @@ require_once "../vendor/autoload.php";
         <form action="home.php" method="post">
             <div class="row">
                 <div class="col-md-5 col-sm-6">
-                    <div class="form-group label-floating">
+                    <div class="form-group">
                         <label class="control-label">Select Contact</label>
-                        <select id="contacts" name="toContact" class="form-control">
-                            <option>Select Contact</option>
+                        <select id="contacts" name="toContact" data-live-search="true" class="form-control">
+                            <option disabled selected>Select Contact</option>
+                            <?php
+                                $res = getRows("contacts");
+                                
+                                while($crow = $res->fetch(PDO::FETCH_ASSOC)){
+                                  echo '<option id='.$crow['phone_number'].'>'.$crow['phc_name'].'</option>';
+                            ?>
+                            
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -50,10 +57,10 @@ require_once "../vendor/autoload.php";
                     <p>OR</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <div class="form-group label-floating">
+                    <div class="form-group">
                         <label class="control-label">Select Contact Group</label>
-                        <select id="contact-group" disabled class="form-control">
-                            <option>Select Contact Group</option>
+                        <select id="contact-group" class="form-control">
+                            <option selected disabled>Select Contact Group</option>
                         </select>
                     </div>
                 </div>

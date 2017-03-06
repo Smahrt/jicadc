@@ -7,7 +7,7 @@
 
 	    	<div class="sidebar-wrapper">
 				<ul class="nav">
-	                <li class="active">
+	                <li>
 	                    <a href="home.php">
 	                        <i class="material-icons">dashboard</i>
 	                        <p>Dashboard</p>

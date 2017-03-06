@@ -1,7 +1,7 @@
 <?php
     
     include('config.php');
-
+    include('models.php');
     
 ?>
 
@@ -24,7 +24,7 @@
 
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
-    <link href="../assets/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-select.min.css">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
@@ -117,10 +117,7 @@
                                             <p class="category">All Surveys</p>
                                             <h3 class="title">
                                                 <?php
-                                                    $query ="SELECT * from surveys";
-                                                    $result = $dbh->query($query);
-                                                    $num = $result->rowcount($result);
-                                                    echo $num;
+                                                    showNumRows("surveys");
                                                 ?>
                                             </h3>
                                         </div>
@@ -158,10 +155,7 @@
                                             <p class="category">Contact Groups</p>
                                             <h3 class="title">
                                                 <?php
-                                                    $query ="SELECT * from contact_type";
-                                                    $result = $dbh->query($query);
-                                                    $num = $result->rowcount($result);
-                                                    echo $num;
+                                                    showNumRows("contact_type");
                                                 ?>
                                             </h3>
                                         </div>
@@ -181,10 +175,7 @@
                                             <p class="category">All Contacts</p>
                                             <h3 class="title">
                                                 <?php
-                                                    $query ="SELECT * from contacts";
-                                                    $result = $dbh->query($query);
-                                                    $num = $result->rowcount($result);
-                                                    echo $num;
+                                                    showNumRows("contacts");
                                                 ?>
                                             </h3>
                                         </div>
@@ -236,15 +227,10 @@
 	<script src="../assets/js/material-dashboard.js"></script>
     
     <!-- My Plugins -->
-    <script src="../assets/js/select2.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/myscript.js"></script>
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/demo.js"></script>
-    
-    <script type="text/javascript">
-        $(document).ready(function(){
-            
-        });
-    </script>
 
 </html>

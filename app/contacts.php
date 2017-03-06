@@ -25,7 +25,7 @@
 
     <!--  Material Dashboard CSS    -->
     <link href="../assets/css/material-dashboard.css" rel="stylesheet"/>
-    <link href="../assets/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-select.min.css">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
@@ -202,7 +202,8 @@
 	<script src="../assets/js/material-dashboard.js"></script>
     
     <!-- My Plugins -->
-    <script src="../assets/js/select2.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/myscript.js"></script>
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/demo.js"></script>
