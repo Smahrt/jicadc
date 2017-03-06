@@ -1,3 +1,7 @@
+<?php
+    include('config.php');
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -132,7 +136,14 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">All Surveys</p>
-                                            <h3 class="title">3</h3>
+                                            <h3 class="title">
+                                                <?php
+                                                    $query ="SELECT * from surveys";
+                                                    $result = $dbh->query($query);
+                                                    $num = $result->rowcount($result);
+                                                    echo $num;
+                                                ?>
+                                            </h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
@@ -166,7 +177,14 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">Contact Groups</p>
-                                            <h3 class="title">12</h3>
+                                            <h3 class="title">
+                                                <?php
+                                                    $query ="SELECT * from contact_type";
+                                                    $result = $dbh->query($query);
+                                                    $num = $result->rowcount($result);
+                                                    echo $num;
+                                                ?>
+                                            </h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
@@ -182,7 +200,14 @@
                                         </div>
                                         <div class="card-content">
                                             <p class="category">All Contacts</p>
-                                            <h3 class="title">245</h3>
+                                            <h3 class="title">
+                                                <?php
+                                                    $query ="SELECT * from contacts";
+                                                    $result = $dbh->query($query);
+                                                    $num = $result->rowcount($result);
+                                                    echo $num;
+                                                ?>
+                                            </h3>
                                         </div>
                                         <div class="card-footer">
                                             <div class="stats">
