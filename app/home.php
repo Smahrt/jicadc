@@ -1,3 +1,34 @@
+<?php
+   require_once "../vendor/autoload.php";
+    use Twilio\Rest\Client;
+    
+    //$AccountSid = "AC635fe259ccfa0983ef7c87c292b2ebec";
+    $AccountSid = "ACbbb2bdc97932964b709697702be99690";
+    //$AuthToken = "b4de3a5516096334a27c1fb3e1815dbd";
+    $AuthToken = "ee536c11385b0bd9864687b90f49cd41";
+
+    // Step 3: Instantiate a new Twilio Rest Client
+    $client = new Client($AccountSid, $AuthToken);
+    $fromNumber = "+18304693282";
+
+    if(isset($_POST['submit'])){
+        //$toNumber = $_POST['toContact'];
+        $toNumber = "+2348137809477";
+        try {
+            // Initiate a new outbound call
+            $call = $client->account->calls->create(
+                $toNumber,
+                $fromNumber,
+                // Step 6: Set the URL Twilio will request when the call is answered.
+                array("url" => "http://demo.twilio.com/docs/voice.xml")
+            );
+            $success = "Started call: " . $call->to;
+        } catch (Exception $e) {
+            $error = "Error: " . $e->getMessage();
+        }
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -122,6 +153,22 @@
 
 	        <div class="content">
 	            <div class="container-fluid">
+                    <?php 
+                    if(isset($sucess)){
+                        echo '<div class="alert alert-success">
+                                    <button type="button" aria-hidden="true" class="close">×</button>
+                                    <span>'.$sucess.'</span>
+                                </div>';
+                    }else if(isset($error)){
+                        echo '<div class="alert alert-danger">
+                                    <button type="button" aria-hidden="true" class="close">×</button>
+                                    <span>'.$error.'</span>
+                                </div>';
+                    
+                    }
+                    
+                        
+                        ?>
 	                <div class="row">
 	                    <div class="col-md-7">
                             <div class="row">
@@ -201,12 +248,12 @@
                                 </div>
                                 
     							<div class="card-content">
-    								<form>
+    								<form action="home.php" method="post">
 	                                    <div class="row">
 	                                        <div class="col-md-5 col-sm-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Select Contact</label>
-                                                    <select id="contacts" class="form-control">
+                                                    <select id="contacts" name="toContact" class="form-control">
                                                         <option>Select Contact</option>
                                                     </select>
 												</div>
@@ -217,7 +264,7 @@
 	                                        <div class="col-md-6 col-sm-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Select Contact Group</label>
-                                                    <select id="contact-group" class="form-control">
+                                                    <select id="contact-group" disabled class="form-control">
                                                         <option>Select Contact Group</option>
                                                     </select>
 												</div>
@@ -234,7 +281,7 @@
 	                                        </div>
 	                                    </div>
 
-	                                    <button type="submit" class="btn btn-warning pull-right">Start Survey</button>
+	                                    <button type="submit" name="submit" value="submit" class="btn btn-warning pull-right">Start Survey</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
     							</div>
